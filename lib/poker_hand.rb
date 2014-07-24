@@ -24,14 +24,22 @@ def poker_hand (card1, card2, card3, card4, card5)
       kind_finder.delete(i)
       kind_finder.each do |j|
         if kind_finder.count(j) == 2
-          result = "full house"
+          result = 'full house'
           kind_finder.delete(j)
         else
           result = 'three of a kind'
         end
       end
     elsif kind_finder.count(i) == 2
-      result = 'one pair'
+      kind_finder.delete(i)
+      kind_finder.each do |k|
+        if kind_finder.count(k) == 2
+          result = 'two pairs'
+          kind_finder.delete(k)
+        else
+          result = 'one pair'
+        end
+      end
     end
     # puts kind_finder.count(i)
   end
