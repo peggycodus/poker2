@@ -14,4 +14,7 @@ describe('poker_hand') do
     expect(poker_hand('2C','2H','2S','4S','2C')).to(eq('four of a kind'))
   end
 
+  it('takes a poker hand and returns whether or not it is a "full house"') do
+    expect(poker_hand('2C','4H','2S','4S','2C')).to(eq('full house'))
+  end
 end

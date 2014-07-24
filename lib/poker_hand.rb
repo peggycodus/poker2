@@ -5,6 +5,8 @@ def poker_hand (card1, card2, card3, card4, card5)
   hand = [card1, card2, card3, card4, card5]
   split_cards = []
   kind_finder = []
+  # kind_finder_part2 = []
+
   hand.each do |c|
     split_cards << c.split("")
   end
@@ -19,16 +21,24 @@ def poker_hand (card1, card2, card3, card4, card5)
     if kind_finder.count(i) == 4
       result = 'four of a kind'
     elsif kind_finder.count(i) == 3
-      result = 'three of a kind'
+      kind_finder.delete(i)
+      kind_finder.each do |j|
+        if kind_finder.count(j) == 2
+          result = "full house"
+          kind_finder.delete(j)
+        else
+          result = 'three of a kind'
+        end
+      end
     elsif kind_finder.count(i) == 2
       result = 'one pair'
     end
-    puts kind_finder.count(i)
+    # puts kind_finder.count(i)
   end
-  # puts kind_finder
+  print kind_finder
   print result
   result
 
 end
 
-poker_hand('2C','2H','2S','4S','5C')
+poker_hand('2C','4H','2S','4S','2C')
